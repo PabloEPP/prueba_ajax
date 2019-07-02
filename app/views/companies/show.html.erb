@@ -11,13 +11,13 @@
 <% end %>
 
 <div id="claims">
-<ol >
-<%@claims.each do |claim| %>
-<% if (@company.id == claim.company_id) %>
-<li><%= claim.content %></li>
-<% end %>
-<% end %>
-</ol>
+  <ol >
+    <%@claims.each do |claim| %>
+    <% if (@company.id == claim.company_id) %>
+      <li><%= claim.content %></li>
+      <% end %>
+    <% end %>
+  </ol>
 
 </div>
 
