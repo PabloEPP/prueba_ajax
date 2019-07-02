@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Companies</h1>
+
+<%= form_with(model: @company) do |form| %>
+  <% if @company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+      <ul>
+      <% @company.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody id = "companies">
+    <% @companies.each do |company| %>
+      <tr id = "<%= company.id%>">
+        <td><%= company.name %></td>
+        <td><%= link_to 'Show', @company %></td>
+        <td><%= link_to 'Edit', edit_company_path(company) %></td>
+        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<%# link_to 'New Company', new_company_path %>

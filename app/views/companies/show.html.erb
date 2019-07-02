@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @company.name %>
+</p>
+
+<%= form_with(model: [@company, Claim.new]) do |f| %>
+<%= f.text_area :content, placeholder: 'Escribe tu comentario aquí...', id: :text %>
+<%= f.submit 'Comentar' %>
+<% end %>
+
+<div id="claims">
+<ol >
+<%@claims.each do |claim| %>
+<% if (@company.id == claim.company_id) %>
+<li><%= claim.content %></li>
+<% end %>
+<% end %>
+</ol>
+
+</div>
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>
